@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#3B82F6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="width">
+    <meta name="msapplication-TileColor" content="#3B82F6">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    
+    <title>Edwin Phones Tech - Professional Phone Repair Services</title>
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- External CSS and JS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@preline/preline@2.0.0/dist/preline.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Polyfills for older browsers -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver,ResizeObserver"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        dark: '#1E293B',
+                        light: '#F8FAFC'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <style>
+        /* Base styles for all browsers */
+        * {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        /* Allow text selection in input fields */
+        input, textarea {
+            -webkit-user-select: text;
+            user-select: text;
+        }
+        
+        /* Prevent zoom on input focus in iOS */
+        @supports (-webkit-touch-callout: none) {
+            input, select, textarea {
+                font-size: 16px !important;
+            }
+        }
+        
+        /* Smooth scrolling for all browsers */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Existing styles... */
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.9) 0%, rgba(16, 185, 129, 0.9) 100%);
+        }
+        /* ... rest of your existing styles ... */
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .backdrop-blur-lg {
+            backdrop-filter: blur(8px);
+        }
+
+        /* New Animations and Visual Improvements */
+        .animate-slide-up {
+            animation: slideUp 0.5s ease-out;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .animate-scale {
+            animation: scale 0.3s ease-out;
+        }
+        @keyframes scale {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .animate-bounce-slow {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #3B82F6 0%, #10B981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .animate-pulse-slow {
+            animation: pulse 3s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .animate-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .animate-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.3) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
+        }
+
+        .animate-typing {
+            overflow: hidden;
+            border-right: 2px solid #3B82F6;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #3B82F6 }
+        }
+    </style>
+
+    <!-- Fallback for browsers that don't support JavaScript -->
+    <noscript>
+        <style>
+            .js-required {
+                display: none;
+            }
+            .no-js-message {
+                display: block;
+                text-align: center;
+                padding: 20px;
+                background: #f8fafc;
+                color: #1e293b;
+            }
+        </style>
+    </noscript>
+</head>
+
+<body class="bg-gray-50 dark:bg-dark text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="flex-shrink-0 flex items-center" onclick="event.preventDefault(); scrollToSection('hero')">
+                        <i class="fas fa-mobile-alt text-primary text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-gray-900 dark:text-white">Edwin Phones Tech</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#" onclick="event.preventDefault(); scrollToSection('services')" class="text-gray-900 dark:text-white hover:text-primary px-3 py-2 rounded-md text-sm font-medium">Services</a>
+                    <a href="#" onclick="event.preventDefault(); scrollToSection('about')" class="text-gray-900 dark:text-white hover:text-primary px-3 py-2 rounded-md text-sm font-medium">About</a>
+                    <a href="#" onclick="event.preventDefault(); scrollToSection('testimonials')" class="text-gray-900 dark:text-white hover:text-primary px-3 py-2 rounded-md text-sm font-medium">Testimonials</a>
+                    <button onclick="toggleTheme()" class="text-gray-900 dark:text-white hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                        <i class="fas fa-sun dark:hidden"></i>
+                        <i class="fas fa-moon hidden dark:block"></i>
+                    </button>
+                    <a href="tel:0534987204" onclick="event.preventDefault(); callUs()" class="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition">
+                        <i class="fas fa-phone-alt mr-2"></i>Contact
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" onclick="event.preventDefault(); scrollToSection('hero'); toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-white hover:text-primary">Home</a>
+                <a href="#" onclick="event.preventDefault(); scrollToSection('services'); toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-white hover:text-primary">Services</a>
+                <a href="#" onclick="event.preventDefault(); scrollToSection('about'); toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-white hover:text-primary">About</a>
+                <a href="#" onclick="event.preventDefault(); scrollToSection('testimonials'); toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-white hover:text-primary">Testimonials</a>
+                <button onclick="toggleTheme(); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-white hover:text-primary">
+                    <i class="fas fa-sun dark:hidden mr-2"></i>
+                    <i class="fas fa-moon hidden dark:block mr-2"></i>
+                    Toggle Theme
+                </button>
+                <a href="tel:0534987204" onclick="event.preventDefault(); callUs(); toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-primary hover:bg-blue-700">
+                    <i class="fas fa-phone-alt mr-2"></i>Contact
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-gradient text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Expert Phone Repairs </h1>
+                    <p class="text-xl mb-8">Fast, reliable, and affordable repairs for all your mobile devices. We fix what others can't!</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#" onclick="event.preventDefault(); scrollToSection('contact')" class="bg-white text-primary px-6 py-3 rounded-lg font-bold text-center hover:bg-gray-100 transition">Get a Quote</a>
+                        <a href="tel:0534987204" onclick="event.preventDefault(); callUs()" class="border-2 border-white px-6 py-3 rounded-lg font-bold text-center hover:bg-white hover:text-primary transition">
+                            <i class="fas fa-phone-alt mr-2"></i> 053 498 7204
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Phone repair" class="rounded-lg shadow-2xl w-full max-w-md animate-float">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Our Services</h2>
+                <p class="text-lg max-w-2xl mx-auto">We offer comprehensive repair services for all major smartphone brands and models.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Cards -->
+                <div class="service-card bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-screen text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Screen Replacement</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Cracked or broken screen? We'll replace it with high-quality parts and restore your device to like-new condition.</p>
+                </div>
+                
+                <div class="service-card bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-battery-full text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Battery Replacement</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Is your battery draining too fast? We'll replace it with a high-capacity battery to restore your phone's endurance.</p>
+                </div>
+                
+                <div class="service-card bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-plug text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Charging Port Repair</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Having trouble charging your device? We'll fix or replace your charging port to get you powered up again.</p>
+                </div>
+                
+                <div class="service-card bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-water text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Water Damage Repair</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Accidental water exposure? Our specialized cleaning and repair process can often save water-damaged devices.</p>
+                </div>
+                
+                <div class="service-card bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-microchip text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Motherboard Repair</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Complex motherboard issues? Our technicians have the expertise to diagnose and repair even the most challenging problems.</p>
+                </div>
+                
+                <div class="service-card bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-md transition duration-300">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-lock text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Software Issues</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Software glitches, viruses, or forgotten passwords? We can troubleshoot and resolve all software-related problems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Repair Rates & Statistics Section -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Our Repair Success Rate</h2>
+                <p class="text-lg max-w-2xl mx-auto">We take pride in our high success rate and customer satisfaction</p>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center transform hover:scale-105 transition-all duration-300">
+                    <div class="text-4xl font-bold text-primary mb-2">98%</div>
+                    <h3 class="text-lg font-semibold mb-2">Repair Success Rate</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Successful repairs completed</p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center transform hover:scale-105 transition-all duration-300">
+                    <div class="text-4xl font-bold text-primary mb-2">4.9/5</div>
+                    <h3 class="text-lg font-semibold mb-2">Customer Rating</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Based on 500+ reviews</p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center transform hover:scale-105 transition-all duration-300">
+                    <div class="text-4xl font-bold text-primary mb-2">24hr</div>
+                    <h3 class="text-lg font-semibold mb-2">Average Turnaround</h3>
+                    <p class="text-gray-600 dark:text-gray-300">For most repairs</p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg text-center transform hover:scale-105 transition-all duration-300">
+                    <div class="text-4xl font-bold text-primary mb-2">100%</div>
+                    <h3 class="text-lg font-semibold mb-2">Warranty Coverage</h3>
+                    <p class="text-gray-600 dark:text-gray-300">90-day warranty on all repairs</p>
+                </div>
+            </div>
+
+            <!-- Detailed Repair Rates - New Design -->
+            <div class="space-y-8">
+                <!-- iPhone Repairs -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-primary to-blue-600 text-white p-6">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-2xl font-bold">iPhone Repairs</h3>
+                            <i class="fab fa-apple text-3xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Screen Replacement -->
+                            <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-mobile-screen text-primary text-2xl mr-3"></i>
+                                    <h4 class="text-lg font-semibold">Screen Replacement</h4>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600 dark:text-gray-300">iPhone 13/14 Series</span>
+                                        <span class="font-bold text-primary">GHS 1,200 - 1,500</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600 dark:text-gray-300">iPhone 11/12 Series</span>
+                                        <span class="font-bold text-primary">GHS 1,000 - 1,300</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600 dark:text-gray-300">iPhone X/XS Series</span>
+                                        <span class="font-bold text-primary">GHS 900 - 1,200</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Battery Replacement -->
+                            <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-battery-full text-primary text-2xl mr-3"></i>
+                                    <h4 class="text-lg font-semibold">Battery Replacement</h4>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600 dark:text-gray-300">Latest Models</span>
+                                        <span class="font-bold text-primary">GHS 350</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600 dark:text-gray-300">Older Models</span>
+                                        <span class="font-bold text-primary">GHS 250</span>
+                                    </div>
+                                    <div class="text-sm text-gray-500 dark:text-gray-400 mt-2">
+                                        * Includes 90-day warranty
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Charging Port -->
+                            <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-plug text-primary text-2xl mr-3"></i>
+                                    <h4 class="text-lg font-semibold">Charging Port</h4>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600 dark:text-gray-300">Latest Models</span>
+                                        <span class="font-bold text-primary">GHS 300</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600 dark:text-gray-300">Older Models</span>
+                                        <span class="font-bold text-primary">GHS 200</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Camera Repair -->
+                            <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-camera text-primary text-2xl mr-3"></i>
+                                    <h4 class="text-lg font-semibold">Camera Repair</h4>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600 dark:text-gray-300">Latest Models</span>
+                                        <span class="font-bold text-primary">GHS 400</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600 dark:text-gray-300">Older Models</span>
+                                        <span class="font-bold text-primary">GHS 300</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Samsung Repairs -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-2xl font-bold">Samsung Repairs</h3>
+                            <i class="fab fa-android text-3xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Screen Replacement -->
+                            <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-mobile-screen text-primary text-2xl mr-3"></i>
+                                    <h4 class="text-lg font-semibold">Screen Replacement</h4>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600 dark:text-gray-300">Galaxy S23 Series</span>
+                                        <span class="font-bold text-primary">GHS 1,100 - 1,400</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600 dark:text-gray-300">Galaxy S21/S22 Series</span>
+                                        <span class="font-bold text-primary">GHS 950 - 1,200</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600 dark:text-gray-300">Galaxy Note Series</span>
+                                        <span class="font-bold text-primary">GHS 1,000 - 1,300</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Battery Replacement -->
+                            <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-battery-full text-primary text-2xl mr-3"></i>
+                                    <h4 class="text-lg font-semibold">Battery Replacement</h4>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600 dark:text-gray-300">Latest Models</span>
+                                        <span class="font-bold text-primary">GHS 320</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600 dark:text-gray-300">Older Models</span>
+                                        <span class="font-bold text-primary">GHS 250</span>
+                                    </div>
+                                    <div class="text-sm text-gray-500 dark:text-gray-400 mt-2">
+                                        * Includes 90-day warranty
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Charging Port -->
+                            <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-plug text-primary text-2xl mr-3"></i>
+                                    <h4 class="text-lg font-semibold">Charging Port</h4>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600 dark:text-gray-300">Latest Models</span>
+                                        <span class="font-bold text-primary">GHS 220</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600 dark:text-gray-300">Older Models</span>
+                                        <span class="font-bold text-primary">GHS 180</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Camera Repair -->
+                            <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-camera text-primary text-2xl mr-3"></i>
+                                    <h4 class="text-lg font-semibold">Camera Repair</h4>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600 dark:text-gray-300">Latest Models</span>
+                                        <span class="font-bold text-primary">GHS 380</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-gray-600 dark:text-gray-300">Older Models</span>
+                                        <span class="font-bold text-primary">GHS 280</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Services -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-gray-600 to-gray-800 text-white p-6">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-2xl font-bold">Other Services</h3>
+                            <i class="fas fa-tools text-3xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-water text-primary text-2xl mr-3"></i>
+                                    <h4 class="text-lg font-semibold">Water Damage Repair</h4>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-300 mb-4">Diagnosis and repair of water-damaged devices</p>
+                                <p class="text-primary font-bold">From GHS 200</p>
+                            </div>
+
+                            <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-microchip text-primary text-2xl mr-3"></i>
+                                    <h4 class="text-lg font-semibold">Software Issues</h4>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-300 mb-4">Virus removal, system updates, and software fixes</p>
+                                <p class="text-primary font-bold">From GHS 150</p>
+                            </div>
+
+                            <div class="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300">
+                                <div class="flex items-center mb-4">
+                                    <i class="fas fa-database text-primary text-2xl mr-3"></i>
+                                    <h4 class="text-lg font-semibold">Data Recovery</h4>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-300 mb-4">Recovery of lost data from damaged devices</p>
+                                <p class="text-primary font-bold">From GHS 300</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rate Note -->
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 dark:text-gray-300 mb-4">* All prices include parts and labor. Final price may vary based on device condition and specific requirements.</p>
+                <a href="#" onclick="event.preventDefault(); scrollToSection('contact')" class="inline-block bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition">
+                    Get a Free Quote
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Repair Pricing</h2>
+                <p class="text-lg max-w-2xl mx-auto">Transparent pricing for common repair services. All prices include parts and labor.</p>
+            </div>
+
+            <!-- iPhone Repairs -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold mb-8 text-primary">iPhone Repairs</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+                        <thead>
+                            <tr class="bg-gray-50 dark:bg-gray-700">
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Model</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Screen Replacement</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Battery Replacement</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Charging Port</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Camera Repair</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">iPhone 13/14 Series</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">From GHS 1,200</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">GHS 350</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">GHS 250</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">From GHS 400</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">iPhone 11/12 Series</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">From GHS 1,000</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">GHS 300</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">GHS 200</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">From GHS 350</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">iPhone X/XS Series</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">From GHS 900</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">GHS 280</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">GHS 180</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">From GHS 300</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Samsung Repairs -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold mb-8 text-primary">Samsung Repairs</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+                        <thead>
+                            <tr class="bg-gray-50 dark:bg-gray-700">
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Model</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Screen Replacement</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Battery Replacement</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Charging Port</th>
+                                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Camera Repair</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Galaxy S23 Series</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">From GHS 1,100</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">GHS 320</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">GHS 220</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">From GHS 380</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Galaxy S21/S22 Series</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">From GHS 950</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">GHS 290</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">GHS 190</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">From GHS 320</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">Galaxy Note Series</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">From GHS 1,000</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">GHS 300</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">GHS 200</td>
+                                <td class="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">From GHS 350</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Other Services -->
+            <div>
+                <h3 class="text-2xl font-bold mb-8 text-primary">Other Services</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h4 class="font-bold mb-2 text-gray-900 dark:text-white">Water Damage Repair</h4>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Diagnosis and repair of water-damaged devices</p>
+                        <p class="text-primary font-bold">From GHS 200</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h4 class="font-bold mb-2 text-gray-900 dark:text-white">Software Issues</h4>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Virus removal, system updates, and software fixes</p>
+                        <p class="text-primary font-bold">From GHS 150</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h4 class="font-bold mb-2 text-gray-900 dark:text-white">Data Recovery</h4>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Recovery of lost data from damaged devices</p>
+                        <p class="text-primary font-bold">From GHS 300</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pricing Note -->
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 dark:text-gray-300 mb-4">* Prices may vary based on device condition and specific requirements</p>
+                <a href="#" onclick="event.preventDefault(); scrollToSection('contact')" class="inline-block bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition">
+                    Get a Free Quote
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="text-3xl font-bold mb-6">About Edwin Phones Tech</h2>
+                    <p class="text-lg mb-4">Founded by Edwin, a certified mobile technician with over 8 years of experience in the industry, Edwin Phones Tech is committed to providing top-quality phone repair services with honesty and integrity.</p>
+                    <p class="text-lg mb-6">We use only premium replacement parts and stand behind our work with solid warranties. Our goal is to get your device working perfectly while saving you money compared to buying a new one.</p>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-secondary text-xl mr-2"></i>
+                            <span>Certified Technicians</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-secondary text-xl mr-2"></i>
+                            <span>Quality Parts</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Technician repairing phone" class="rounded-lg shadow-xl w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">What Our Customers Say</h2>
+                <p class="text-lg max-w-2xl mx-auto">Don't just take our word for it - hear from our satisfied customers.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial Cards -->
+                <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah M.">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">Sarah M.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">"Edwin fixed my water-damaged iPhone when no one else could. His prices were fair and the service was quick. Highly recommend!"</p>
+                </div>
+                
+                <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/45.jpg" alt="James K.">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">James K.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">"Fast and professional service. My Samsung screen was replaced in under an hour and looks brand new. Will definitely come back."</p>
+                </div>
+                
+                <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="flex-shrink-0">
+                            <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Amina S.">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold">Amina S.</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">"Edwin saved all my photos when my phone wouldn't turn on. His knowledge and patience were impressive. Very grateful for his help!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row">
+                <!-- Contact Information -->
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h2 class="text-3xl font-bold mb-6">Contact Us</h2>
+                    <p class="text-lg mb-6">Have questions or need a repair? Reach out to us and we'll get back to you as soon as possible.</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-phone-alt text-primary text-xl mt-1"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-bold">Phone</h4>
+                                <a href="tel:0534987204" onclick="event.preventDefault(); callUs()" class="text-gray-600 dark:text-gray-300 hover:text-primary">053 498 7204</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-envelope text-primary text-xl mt-1"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-bold">Email</h4>
+                                <a href="mailto:info@edwinphonestech.com" onclick="event.preventDefault(); emailUs()" class="text-gray-600 dark:text-gray-300 hover:text-primary">info@edwinphonestech.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-primary text-xl mt-1"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-bold">Location</h4>
+                                <p class="text-gray-600 dark:text-gray-300">Abotuase, Volta Region, Ghana</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-clock text-primary text-xl mt-1"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-bold">Hours</h4>
+                                <p class="text-gray-600 dark:text-gray-300">Mon-Fri: 9am - 6pm<br>Sat: 10am - 4pm<br>Sun: Closed</p>
+                            </div>
+                        </div>
+
+                        <!-- Location Map -->
+                        <div class="mt-8">
+                            <h4 class="font-bold mb-4">Find Us</h4>
+                            <div class="w-full h-64 rounded-lg overflow-hidden shadow-lg">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.0!2d0.0!3d6.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMDAnMDAuMCJOIDDCsDAwJzAwLjAiRQ!5e0!3m2!1sen!2sgh!4v1620000000000!5m2!1sen!2sgh" 
+                                    width="100%" 
+                                    height="100%" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    class="rounded-lg">
+                                </iframe>
+                            </div>
+                            <p class="text-sm text-gray-500 mt-2">Abotuase, Volta Region, Ghana</p>
+                            <div class="mt-4">
+                                <a href="https://maps.google.com/?q=6.0,0.0" target="_blank" class="text-primary hover:text-blue-700 flex items-center">
+                                    <i class="fas fa-directions mr-2"></i>
+                                    Get Directions
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="md:w-1/2">
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold mb-6">Get a Free Quote</h3>
+                        <form id="contactForm" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white" required>
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white" required>
+                            </div>
+                            
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone</label>
+                                <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white" required>
+                            </div>
+                            
+                            <div>
+                                <label for="device" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Device Type</label>
+                                <select id="device" name="device" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white" required>
+                                    <option value="">Select your device</option>
+                                    <option value="iPhone">iPhone</option>
+                                    <option value="Samsung">Samsung</option>
+                                    <option value="Huawei">Huawei</option>
+                                    <option value="Other Android">Other Android</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="issue" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Issue Description</label>
+                                <textarea id="issue" name="issue" rows="4" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-primary text-white py-3 px-4 rounded-lg font-bold hover:bg-blue-700 transition">Submit Request</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/233534987204" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 z-50 animate-bounce">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Special Offers Section -->
+    <section class="py-16 bg-gradient-to-r from-primary to-secondary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Special Offers</h2>
+                <p class="text-lg">Limited time deals to save you money on repairs</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white/10 backdrop-blur-lg p-6 rounded-xl">
+                    <div class="text-4xl font-bold mb-2">20% OFF</div>
+                    <h3 class="text-xl font-bold mb-2">Screen Repairs</h3>
+                    <p>Get 20% off on all screen replacements this month</p>
+                    <a href="#" onclick="event.preventDefault(); scrollToSection('contact')" class="mt-4 inline-block bg-white text-primary px-6 py-2 rounded-lg font-bold hover:bg-gray-100 transition">Claim Offer</a>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-lg p-6 rounded-xl">
+                    <div class="text-4xl font-bold mb-2">Free</div>
+                    <h3 class="text-xl font-bold mb-2">Diagnosis</h3>
+                    <p>Free diagnosis for all device issues</p>
+                    <a href="#" onclick="event.preventDefault(); scrollToSection('contact')" class="mt-4 inline-block bg-white text-primary px-6 py-2 rounded-lg font-bold hover:bg-gray-100 transition">Book Now</a>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-lg p-6 rounded-xl">
+                    <div class="text-4xl font-bold mb-2">15% OFF</div>
+                    <h3 class="text-xl font-bold mb-2">Battery Replacement</h3>
+                    <p>Save 15% on all battery replacements</p>
+                    <a href="#" onclick="event.preventDefault(); scrollToSection('contact')" class="mt-4 inline-block bg-white text-primary px-6 py-2 rounded-lg font-bold hover:bg-gray-100 transition">Get Deal</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Repair Status Tracker -->
+    <div id="repairTracker" class="fixed bottom-24 right-6 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg z-50 hidden">
+        <div class="flex items-center justify-between mb-2">
+            <h3 class="font-bold">Track Your Repair</h3>
+            <button onclick="toggleRepairTracker()" class="text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="space-y-2">
+            <input type="text" placeholder="Enter Repair ID" class="w-full px-3 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600">
+            <button class="w-full bg-primary text-white py-2 rounded-lg hover:bg-blue-700 transition">Track</button>
+        </div>
+    </div>
+
+    <!-- Repair Tracker Button -->
+    <button onclick="toggleRepairTracker()" class="fixed bottom-6 right-24 bg-primary text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 z-50">
+        <i class="fas fa-tools text-xl"></i>
+    </button>
+
+    <!-- Appointment Scheduling Modal -->
+    <div id="appointmentModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="min-h-screen px-4 text-center">
+            <div class="fixed inset-0" aria-hidden="true">
+                <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+            </div>
+            <span class="inline-block h-screen align-middle" aria-hidden="true">&#8203;</span>
+            <div class="inline-block w-full max-w-2xl p-6 my-8 text-left align-middle transition-all transform bg-white dark:bg-gray-800 shadow-xl rounded-2xl">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Schedule an Appointment</h3>
+                    <button onclick="toggleAppointmentModal()" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <form id="appointmentForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
+                            <input type="text" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Phone</label>
+                            <input type="tel" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Device Type</label>
+                        <select required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white">
+                            <option value="">Select your device</option>
+                            <option value="iPhone">iPhone</option>
+                            <option value="Samsung">Samsung</option>
+                            <option value="Huawei">Huawei</option>
+                            <option value="Other Android">Other Android</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Issue Description</label>
+                        <textarea required rows="3" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white"></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Preferred Date</label>
+                            <input type="date" required min="" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Preferred Time</label>
+                            <select required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white">
+                                <option value="">Select time</option>
+                                <option value="09:00">09:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="14:00">02:00 PM</option>
+                                <option value="15:00">03:00 PM</option>
+                                <option value="16:00">04:00 PM</option>
+                                <option value="17:00">05:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end space-x-4">
+                        <button type="button" onclick="toggleAppointmentModal()" class="px-6 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition">Cancel</button>
+                        <button type="submit" class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 transition">Schedule Appointment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Schedule Appointment Button -->
+    <button onclick="toggleAppointmentModal()" class="fixed bottom-6 right-40 bg-primary text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 z-50">
+        <i class="fas fa-calendar-alt text-xl"></i>
+    </button>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+                <p class="text-lg max-w-2xl mx-auto">Find answers to common questions about our repair services</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Repair Questions -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold mb-6 text-primary">Repair Questions</h3>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
+                        <button onclick="toggleFAQ(this)" class="w-full flex justify-between items-center text-left">
+                            <span class="font-semibold">How long does a typical repair take?</span>
+                            <i class="fas fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div class="mt-4 hidden">
+                            <p class="text-gray-600 dark:text-gray-300">Most common repairs like screen replacements or battery changes can be completed within 1-2 hours. More complex repairs may take 24-48 hours. We'll always provide you with an estimated completion time when you bring in your device.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
+                        <button onclick="toggleFAQ(this)" class="w-full flex justify-between items-center text-left">
+                            <span class="font-semibold">Do you offer warranty on repairs?</span>
+                            <i class="fas fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div class="mt-4 hidden">
+                            <p class="text-gray-600 dark:text-gray-300">Yes, we offer a 90-day warranty on all our repairs and replacement parts. This covers any issues that might arise from the repair work or defective parts.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
+                        <button onclick="toggleFAQ(this)" class="w-full flex justify-between items-center text-left">
+                            <span class="font-semibold">What types of phones do you repair?</span>
+                            <i class="fas fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div class="mt-4 hidden">
+                            <p class="text-gray-600 dark:text-gray-300">We repair all major smartphone brands including iPhone, Samsung, Huawei, and other Android devices. Our technicians are trained to handle both current and older models.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Questions -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold mb-6 text-primary">Service Questions</h3>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
+                        <button onclick="toggleFAQ(this)" class="w-full flex justify-between items-center text-left">
+                            <span class="font-semibold">Do I need to make an appointment?</span>
+                            <i class="fas fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div class="mt-4 hidden">
+                            <p class="text-gray-600 dark:text-gray-300">While walk-ins are welcome, we recommend making an appointment to ensure we can serve you promptly. You can schedule an appointment through our website or by calling us directly.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
+                        <button onclick="toggleFAQ(this)" class="w-full flex justify-between items-center text-left">
+                            <span class="font-semibold">What should I do before bringing my phone for repair?</span>
+                            <i class="fas fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div class="mt-4 hidden">
+                            <p class="text-gray-600 dark:text-gray-300">Please backup your data before bringing your device in for repair. While we take every precaution, it's always best to have your data safely backed up. Also, remove any screen protectors or cases before bringing in your device.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
+                        <button onclick="toggleFAQ(this)" class="w-full flex justify-between items-center text-left">
+                            <span class="font-semibold">How do I track my repair status?</span>
+                            <i class="fas fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div class="mt-4 hidden">
+                            <p class="text-gray-600 dark:text-gray-300">You can track your repair status using the repair tracker on our website. Simply enter your repair ID, and you'll get real-time updates on your device's status. You can also contact us directly for updates.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional FAQ Categories -->
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Pricing Questions -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold mb-6 text-primary">Pricing Questions</h3>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
+                        <button onclick="toggleFAQ(this)" class="w-full flex justify-between items-center text-left">
+                            <span class="font-semibold">How much does a screen replacement cost?</span>
+                            <i class="fas fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div class="mt-4 hidden">
+                            <p class="text-gray-600 dark:text-gray-300">Screen replacement costs vary depending on the device model and type of screen (original or aftermarket). We offer free quotes, so you can know the exact cost before proceeding with the repair.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
+                        <button onclick="toggleFAQ(this)" class="w-full flex justify-between items-center text-left">
+                            <span class="font-semibold">Do you offer any payment plans?</span>
+                            <i class="fas fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div class="mt-4 hidden">
+                            <p class="text-gray-600 dark:text-gray-300">We accept various payment methods including cash, mobile money, and bank transfers. For larger repairs, we can discuss payment options to make it more manageable for you.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data & Privacy -->
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold mb-6 text-primary">Data & Privacy</h3>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
+                        <button onclick="toggleFAQ(this)" class="w-full flex justify-between items-center text-left">
+                            <span class="font-semibold">Is my data safe during repair?</span>
+                            <i class="fas fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div class="mt-4 hidden">
+                            <p class="text-gray-600 dark:text-gray-300">Yes, we take data privacy very seriously. Our technicians are trained to handle devices without accessing personal data. However, we recommend backing up your data before any repair as a precaution.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
+                        <button onclick="toggleFAQ(this)" class="w-full flex justify-between items-center text-left">
+                            <span class="font-semibold">Can you help with data recovery?</span>
+                            <i class="fas fa-chevron-down transition-transform"></i>
+                        </button>
+                        <div class="mt-4 hidden">
+                            <p class="text-gray-600 dark:text-gray-300">Yes, we offer data recovery services for devices that won't turn on or have been damaged. Our success rate depends on the extent of the damage, but we'll always try our best to recover your important data.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Edwin Phones Tech</h3>
+                    <p class="text-gray-400">Professional phone repair services with a commitment to quality and customer satisfaction.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" onclick="event.preventDefault(); scrollToSection('services')" class="text-gray-400 hover:text-white">Services</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); scrollToSection('about')" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); scrollToSection('testimonials')" class="text-gray-400 hover:text-white">Testimonials</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); scrollToSection('contact')" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="font-bold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Screen Repair</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Battery Replacement</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Water Damage</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Software Issues</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social Links -->
+                <div>
+                    <h4 class="font-bold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    <div class="mt-4">
+                        <a href="tel:0534987204" onclick="event.preventDefault(); callUs()" class="inline-flex items-center text-gray-400 hover:text-white">
+                            <i class="fas fa-phone-alt mr-2"></i> 053 498 7204
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2023 Edwin Phones Tech. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                window.scrollTo({
+                    top: section.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Phone call function
+        function callUs() {
+            const confirmationDialog = document.createElement('div');
+            confirmationDialog.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4';
+            confirmationDialog.innerHTML = `
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-md mx-auto transform transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Call Edwin Phones Tech</h3>
+                        <button class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" onclick="this.closest('.fixed').remove(); document.body.style.overflow = 'auto';">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                            <p class="text-sm text-blue-800 dark:text-blue-200">
+                                <i class="fas fa-info-circle mr-2"></i>
+                                Would you like to call Edwin Phones Tech at 053 498 7204?
+                            </p>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg">
+                            <div class="flex items-center justify-center space-x-2">
+                                <i class="fas fa-phone-alt text-primary text-2xl"></i>
+                                <span class="text-lg font-semibold">053 498 7204</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-3">
+                        <button class="w-full sm:w-auto px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition" 
+                                onclick="this.closest('.fixed').remove(); document.body.style.overflow = 'auto';">
+                            Cancel
+                        </button>
+                        <button class="w-full sm:w-auto px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 transition flex items-center justify-center space-x-2" 
+                                onclick="window.location.href='tel:0534987204'; this.closest('.fixed').remove(); document.body.style.overflow = 'auto';">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>Call Now</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Add the dialog to the page
+            document.body.appendChild(confirmationDialog);
+            
+            // Prevent body scrolling when dialog is open
+            document.body.style.overflow = 'hidden';
+            
+            // Remove dialog and restore scrolling when clicking outside
+            confirmationDialog.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.remove();
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // Email function
+        function emailUs() {
+            window.location.href = 'mailto:info@edwinphonestech.com';
+        }
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const device = document.getElementById('device').value;
+            const issue = document.getElementById('issue').value;
+
+            // Format the message for WhatsApp
+            const message = `📱 EDWIN PHONES TECH - New Quote Request 📱%0A%0A` +
+                `👤 Customer Details%0A` +
+                `━━━━━━━━━━━━━━━━━━━━%0A` +
+                `• Name: ${name}%0A` +
+                `• Phone: ${phone}%0A` +
+                `• Email: ${email}%0A%0A` +
+                `📱 Device Information%0A` +
+                `━━━━━━━━━━━━━━━━━━━━%0A` +
+                `• Device Type: ${device}%0A` +
+                `• Issue Description: ${issue}%0A%0A` +
+                `💬 Request Type%0A` +
+                `━━━━━━━━━━━━━━━━━━━━%0A` +
+                `Free Quote Request%0A%0A` +
+                `Please provide a quote for the repair service. We'll get back to you shortly with pricing details.%0A%0A` +
+                `Thank you for choosing Edwin Phones Tech! 🛠️✨`;
+
+            // WhatsApp number
+            const whatsappNumber = '233534987204';
+            
+            // Create WhatsApp URL
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+            
+            // Check if user is on mobile
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            
+            // Create a custom confirmation dialog
+            const confirmationDialog = document.createElement('div');
+            confirmationDialog.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4';
+            confirmationDialog.innerHTML = `
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-md mx-auto transform transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Send Quote Request</h3>
+                        <button class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" onclick="this.closest('.fixed').remove(); document.body.style.overflow = 'auto';">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                            <p class="text-sm text-blue-800 dark:text-blue-200">
+                                <i class="fas fa-info-circle mr-2"></i>
+                                Your quote request will be sent via WhatsApp. We'll review your request and provide pricing details shortly.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg">
+                            <h4 class="font-semibold mb-2 text-gray-900 dark:text-white">Request Summary</h4>
+                            <div class="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                                <p><span class="font-medium">Device:</span> ${device}</p>
+                                <p><span class="font-medium">Contact:</span> ${phone}</p>
+                                <p><span class="font-medium">Email:</span> ${email}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-3">
+                        <button class="w-full sm:w-auto px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition" 
+                                onclick="this.closest('.fixed').remove(); document.body.style.overflow = 'auto';">
+                            Cancel
+                        </button>
+                        <button class="w-full sm:w-auto px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 transition flex items-center justify-center space-x-2" 
+                                onclick="handleWhatsAppRedirect('${whatsappUrl}', ${isMobile});">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>Send via WhatsApp</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Add the dialog to the page
+            document.body.appendChild(confirmationDialog);
+            
+            // Prevent body scrolling when dialog is open
+            document.body.style.overflow = 'hidden';
+            
+            // Remove dialog and restore scrolling when clicking outside
+            confirmationDialog.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.remove();
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Dark/light mode toggle (system preference)
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        // Repair Tracker Toggle
+        function toggleRepairTracker() {
+            const tracker = document.getElementById('repairTracker');
+            tracker.classList.toggle('hidden');
+        }
+
+        // Handle Repair Tracking
+        document.getElementById('repairTracker').querySelector('button').addEventListener('click', function() {
+            const repairId = document.getElementById('repairTracker').querySelector('input').value;
+            
+            if (!repairId) {
+                alert('Please enter your Repair ID');
+                return;
+            }
+
+            // Format the message for WhatsApp
+            const message = `📱 EDWIN PHONES TECH - Repair Status Check 📱
+
+            🔍 Repair Tracking Request
+            ━━━━━━━━━━━━━━━━━━━━
+            • Repair ID: ${repairId}
+
+            Please provide an update on the status of this repair.
+
+            Thank you for choosing Edwin Phones Tech! 🛠️✨`;
+
+            // WhatsApp number
+            const whatsappNumber = '233534987204';
+            
+            // Create WhatsApp URL
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+            
+            // Check if user is on mobile
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            
+            // Create a custom confirmation dialog
+            const confirmationDialog = document.createElement('div');
+            confirmationDialog.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4';
+            confirmationDialog.innerHTML = `
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-md mx-auto transform transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Track Repair Status</h3>
+                        <button class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" onclick="this.closest('.fixed').remove(); document.body.style.overflow = 'auto';">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                            <p class="text-sm text-blue-800 dark:text-blue-200">
+                                <i class="fas fa-info-circle mr-2"></i>
+                                Your repair status request will be sent via WhatsApp. We'll provide you with an update shortly.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg">
+                            <h4 class="font-semibold mb-2 text-gray-900 dark:text-white">Tracking Details</h4>
+                            <div class="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                                <p><span class="font-medium">Repair ID:</span> ${repairId}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-3">
+                        <button class="w-full sm:w-auto px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition" 
+                                onclick="this.closest('.fixed').remove(); document.body.style.overflow = 'auto';">
+                            Cancel
+                        </button>
+                        <button class="w-full sm:w-auto px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 transition flex items-center justify-center space-x-2" 
+                                onclick="handleWhatsAppRedirect('${whatsappUrl}', ${isMobile});">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>Check Status</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Add the dialog to the page
+            document.body.appendChild(confirmationDialog);
+            
+            // Prevent body scrolling when dialog is open
+            document.body.style.overflow = 'hidden';
+            
+            // Remove dialog and restore scrolling when clicking outside
+            confirmationDialog.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.remove();
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Add animation to service cards on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Add smooth scroll to top button
+        const scrollToTopBtn = document.createElement('button');
+        scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        scrollToTopBtn.className = 'fixed bottom-6 left-6 bg-primary text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 z-50 hidden';
+        document.body.appendChild(scrollToTopBtn);
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.remove('hidden');
+            } else {
+                scrollToTopBtn.classList.add('hidden');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Set minimum date for appointment to today
+        document.querySelector('input[type="date"]').min = new Date().toISOString().split('T')[0];
+
+        // Appointment Modal Toggle
+        function toggleAppointmentModal() {
+            const modal = document.getElementById('appointmentModal');
+            modal.classList.toggle('hidden');
+            document.body.style.overflow = modal.classList.contains('hidden') ? 'auto' : 'hidden';
+        }
+
+        // Handle WhatsApp redirect with mobile detection
+        function handleWhatsAppRedirect(url, isMobile) {
+            if (isMobile) {
+                // For mobile devices, try to open WhatsApp app directly
+                window.location.href = url;
+            } else {
+                // For desktop, open in new tab
+                window.open(url, '_blank');
+            }
+            
+            // Close the dialog and reset form
+            const dialog = document.querySelector('.fixed');
+            if (dialog) {
+                dialog.remove();
+                document.body.style.overflow = 'auto';
+            }
+            document.getElementById('appointmentForm').reset();
+            toggleAppointmentModal();
+        }
+
+        // Add touch feedback for mobile buttons
+        document.addEventListener('touchstart', function() {}, {passive: true});
+        
+        // Prevent zoom on double tap for mobile
+        document.addEventListener('dblclick', function(e) {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        // Add mobile-specific form validation
+        document.getElementById('appointmentForm').addEventListener('input', function(e) {
+            if (e.target.type === 'tel') {
+                // Format phone number as user types
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 0) {
+                    value = value.match(new RegExp('.{1,3}', 'g')).join(' ');
+                }
+                e.target.value = value;
+            }
+        });
+
+        // Add animation classes on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+                const isVisible = (elementTop < window.innerHeight) && (elementBottom >= 0);
+                
+                if (isVisible) {
+                    element.classList.add('animate-slide-up');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Add hover effects to service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.classList.add('hover-lift');
+        });
+
+        // Add typing animation to hero text
+        const heroTitle = document.querySelector('#hero h1');
+        if (heroTitle) {
+            heroTitle.classList.add('animate-typing');
+        }
+
+        // Add shine effect to CTA buttons
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.classList.add('animate-shine');
+        });
+
+        // Add pulse animation to special offers
+        document.querySelectorAll('.special-offer').forEach(offer => {
+            offer.classList.add('animate-pulse-slow');
+        });
+
+        // Add glass effect to modal
+        const modal = document.querySelector('#appointmentModal .inline-block');
+        if (modal) {
+            modal.classList.add('glass-effect');
+        }
+
+        // Handle Appointment Form Submission
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const formData = new FormData(this);
+            const appointmentData = Object.fromEntries(formData.entries());
+            
+            // Format the message for WhatsApp
+            const message = `📱 EDWIN PHONES TECH - New Appointment Request 📱
+
+            👤 Customer Details
+            ━━━━━━━━━━━━━━━━━━━━
+             • Name: ${appointmentData.name}
+             • Phone: ${appointmentData.phone}
+
+            📱 Device Information
+            ━━━━━━━━━━━━━━━━━━━━
+             • Device Type: ${appointmentData.device}
+             • Issue Description: ${appointmentData.issue}
+
+            📅 Appointment Details
+            ━━━━━━━━━━━━━━━━━━━━
+             • Preferred Date: ${appointmentData.date}
+             • Preferred Time: ${appointmentData.time}
+
+            💬 Request Type
+            ━━━━━━━━━━━━━━━━━━━━
+            Repair Appointment Request
+
+            Please confirm if this time slot is available. We'll get back to you shortly with confirmation.
+
+            Thank you for choosing Edwin Phones Tech! 🛠️✨`;
+
+            // WhatsApp number
+            const whatsappNumber = '233534987204';
+            
+            // Create WhatsApp URL
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+            
+            // Check if user is on mobile
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            
+            // Create a custom confirmation dialog
+            const confirmationDialog = document.createElement('div');
+            confirmationDialog.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4';
+            confirmationDialog.innerHTML = `
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-xl w-full max-w-md mx-auto transform transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Confirm Appointment</h3>
+                        <button class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" onclick="this.closest('.fixed').remove(); document.body.style.overflow = 'auto';">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                            <p class="text-sm text-blue-800 dark:text-blue-200">
+                                <i class="fas fa-info-circle mr-2"></i>
+                                Your appointment request will be sent via WhatsApp. We'll review your request and confirm the time slot shortly.
+                            </p>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-700/50 p-4 rounded-lg">
+                            <h4 class="font-semibold mb-2 text-gray-900 dark:text-white">Appointment Summary</h4>
+                            <div class="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                                <p><span class="font-medium">Date:</span> ${appointmentData.date}</p>
+                                <p><span class="font-medium">Time:</span> ${appointmentData.time}</p>
+                                <p><span class="font-medium">Device:</span> ${appointmentData.device}</p>
+                                <p><span class="font-medium">Contact:</span> ${appointmentData.phone}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-3">
+                        <button class="w-full sm:w-auto px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition" 
+                                onclick="this.closest('.fixed').remove(); document.body.style.overflow = 'auto';">
+                            Cancel
+                        </button>
+                        <button class="w-full sm:w-auto px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-700 transition flex items-center justify-center space-x-2" 
+                                onclick="handleWhatsAppRedirect('${whatsappUrl}', ${isMobile});">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>Send via WhatsApp</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Add the dialog to the page
+            document.body.appendChild(confirmationDialog);
+            
+            // Prevent body scrolling when dialog is open
+            document.body.style.overflow = 'hidden';
+            
+            // Remove dialog and restore scrolling when clicking outside
+            confirmationDialog.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.remove();
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // FAQ Toggle Function
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            // Toggle content
+            content.classList.toggle('hidden');
+            
+            // Toggle icon rotation
+            icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+            
+            // Add animation
+            content.style.transition = 'all 0.3s ease-in-out';
+        }
+
+        // Theme Toggle Function
+        function toggleTheme() {
+            // Get current theme
+            const isDark = document.documentElement.classList.contains('dark');
+            
+            // Toggle theme
+            if (isDark) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+            
+            // Add transition effect
+            document.documentElement.style.transition = 'background-color 0.3s ease-in-out';
+        }
+
+        // Check for saved theme preference or use system preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (!('theme' in localStorage)) {
+                if (e.matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+        });
+    </script>
+
+    <!-- Mobile Browser Support -->
+    <script>
+        // Mobile detection and enhancements
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+        const isAndroid = /Android/i.test(navigator.userAgent);
+
+        // Add mobile-specific classes
+        if (isMobile) {
+            document.documentElement.classList.add('is-mobile');
+            if (isIOS) document.documentElement.classList.add('is-ios');
+            if (isAndroid) document.documentElement.classList.add('is-android');
+        }
+
+        // Handle touch events
+        let touchStartY = 0;
+        document.addEventListener('touchstart', function(e) {
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        document.addEventListener('touchend', function(e) {
+            const touchEndY = e.changedTouches[0].clientY;
+            const swipeDistance = touchEndY - touchStartY;
+            
+            if (Math.abs(swipeDistance) > 50) {
+                const openModals = document.querySelectorAll('.fixed:not(.hidden)');
+                openModals.forEach(modal => {
+                    if (modal.id === 'mobile-menu' || modal.id === 'appointmentModal') {
+                        modal.classList.add('hidden');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+        }, { passive: true });
+
+        // Prevent pull-to-refresh
+        document.body.addEventListener('touchmove', function(e) {
+            if (e.target.closest('.overflow-auto, .overflow-y-auto')) return;
+            if (window.scrollY === 0 && e.touches[0].clientY > touchStartY) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        // Handle mobile keyboard
+        const inputs = document.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                setTimeout(() => {
+                    this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 300);
+            });
+        });
+
+        // Handle mobile menu
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu) {
+            mobileMenu.addEventListener('transitionend', function() {
+                if (this.classList.contains('hidden')) {
+                    this.style.display = 'none';
+                }
+            });
+
+            mobileMenu.addEventListener('transitionstart', function() {
+                if (!this.classList.contains('hidden')) {
+                    this.style.display = 'block';
+                }
+            });
+        }
+
+        // Handle mobile browser back button
+        window.addEventListener('popstate', function() {
+            const openModals = document.querySelectorAll('.fixed:not(.hidden)');
+            openModals.forEach(modal => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Handle mobile form submission
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            form.addEventListener('submit', function() {
+                if (isMobile) {
+                    document.activeElement.blur();
+                }
+            });
+        });
+
+        // Add loading indicator
+        window.addEventListener('load', function() {
+            document.documentElement.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>
